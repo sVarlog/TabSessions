@@ -1,54 +1,74 @@
-# React + TypeScript + Vite
+# Session Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Session Manager is a Vite-based React application built with TypeScript, Tailwind CSS, and Redux Toolkit. It allows users to manage sessions (tabs) with persistent state stored in localStorage and features an open tabs header for quick navigation.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Node.js:** v21.1.0 or later
+- **Git**
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. **Clone the repository:**
 
-```js
-export default tseslint.config({
-	extends: [
-		// Remove ...tseslint.configs.recommended and replace with this
-		...tseslint.configs.recommendedTypeChecked,
-		// Alternatively, use this for stricter rules
-		...tseslint.configs.strictTypeChecked,
-		// Optionally, add this for stylistic rules
-		...tseslint.configs.stylisticTypeChecked,
-	],
-	languageOptions: {
-		// other options...
-		parserOptions: {
-			project: ['./tsconfig.node.json', './tsconfig.app.json'],
-			tsconfigRootDir: import.meta.dirname,
-		},
-	},
-});
+    ```bash
+    git clone https://github.com/sVarlog/TabSessions.git
+    cd session-manager
+    Install dependencies:
+    ```
+
+    1.1. Instalation:
+
+    ```bash
+    npm install
+    ```
+
+2. **Run the development server:**
+
+    ```bash
+    npm run dev
+    ```
+
+3. **Open your browser:**
+
+    Navigate to [http://localhost:5173](http://localhost:5173) (or the port specified by Vite) to view the application.
+
+## Project Structure
+
+The project structure provides an overview of the application's file organization, helping developers quickly locate and understand key components and configurations.
+
+```
+├── index.html
+├── package.json
+├── package-lock.json
+├── postcss.config.js
+├── tailwind.config.js
+├── tsconfig.json
+├── tsconfig.app.json
+├── tsconfig.node.json
+├── vite.config.ts
+├── .gitignore
+├── .prettierrc
+├── eslint.config.js
+├── README.md
+├── src/
+│   ├── assets/                    # Optional assets folder (e.g. images)
+│   ├── components/
+│   │   └── OpenTabsBar.tsx        # Header for open tabs
+│   ├── pages/
+│   │   ├── Dashboard.tsx          # Dashboard to manage sessions
+│   │   └── SessionView.tsx        # View for individual session
+│   ├── store/
+│   │   ├── index.ts               # Redux store setup (configureStore, rootReducer)
+│   │   └── slices/
+│   │       └── sessionSlice.ts    # Redux Toolkit slice for session state
+│   ├── App.tsx                    # Root component with routes and layout
+│   ├── main.tsx                   # App entry point
+│   └── vite-env.d.ts              # Vite TypeScript env types
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Available Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
-
-export default tseslint.config({
-	plugins: {
-		// Add the react-x and react-dom plugins
-		'react-x': reactX,
-		'react-dom': reactDom,
-	},
-	rules: {
-		// other rules...
-		// Enable its recommended typescript rules
-		...reactX.configs['recommended-typescript'].rules,
-		...reactDom.configs.recommended.rules,
-	},
-});
-```
+- `npm run dev` - Starts the development server.
+- `npm run build` - Bundles the app into static files for production.
+- `npm run preview` - Locally preview the production build.
